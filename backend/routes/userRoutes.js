@@ -1,8 +1,11 @@
 import express from 'express';
-import { authUser } from "../controllers/userController.js";
+import { authUser, getUserProfile, logoutUser, registerUser, updateUserProfile } from "../controllers/userController.js";
 
 const router=express.Router();
 
-router.route('/auth').post(authUser);
+router.post('/',registerUser);
+router.post('/auth',authUser);
+router.post('/logout',logoutUser);
+router.route('/profile').get(getUserProfile).put(updateUserProfile)
 
 export default router;
